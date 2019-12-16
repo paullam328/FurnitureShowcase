@@ -2,13 +2,14 @@
     $hostname = 'localhost';
     $username = 'showcasedemo';
     $password = 'demoShowcase';
-    $database = 'showcasedemo';
+    $database = 'furnitureshowcase';
 
     $secretKey = "mySecretKey"; # change this val to match val stored in C#
 
     #connect:
     try {
         $dbh = new PDO('mysql:host='. $hostname . ';dbname='. $database, $username, $password);
+        echo '<h1>Login Success!</h1></pre>';
     } catch (PDOException $e) {
         echo '<h1>An error has occured.</h1><pre>', $e->getMessage() ,'</pre>';
     }

@@ -60,12 +60,8 @@ public class CursorController : MonoBehaviour
                 Mathf.Infinity,
                 layerMask))
             {
-                Debug.DrawRay(Camera.main.gameObject.transform.position,
-                    Camera.main.gameObject.transform.TransformDirection(Vector3.forward) * hit.distance,
-                    Color.yellow);
-                //Debug.Log("Did Hit: " + hit.collider.gameObject.name);
 
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0) && hit.collider.transform.gameObject.layer != 13)
                 {
                     _infoDisplay.SetActive(true);
                     if (hit.collider.transform.GetComponent<Furniture>())
@@ -81,15 +77,14 @@ public class CursorController : MonoBehaviour
                         Debug.Log("Can't Find furniture: " +  hit.collider.transform.name);
                     }
                     Cursor.lockState = CursorLockMode.None;
+                    _img.color = Color.yellow;
                 }
-
-                _img.color = Color.yellow;
             }
             else
             {
-                Debug.DrawRay(Camera.main.gameObject.transform.position,
-                    Camera.main.gameObject.transform.TransformDirection(Vector3.forward) * 1000,
-                    Color.white);
+                //Debug.DrawRay(Camera.main.gameObject.transform.position,
+                //    Camera.main.gameObject.transform.TransformDirection(Vector3.forward) * 1000,
+                //    Color.white);
                 //Debug.Log("Did not Hit");
 
                 _img.color = Color.white;
